@@ -21,21 +21,32 @@ const CountersList = () => {
         setCounters(initialState)
     }
 
-    const handleUpdate = () => {
-        const updatedState = [
-            {id: 0, value: 1, name: 'Ненужная вещь'},
-            {id: 1, value: 2, name: 'Ложка'},
-            {id: 2, value: 3, name: 'Вилка'},
-            {id: 3, value: 4, name: 'Тарелка'},
-            {id: 4, value: 0, name: 'Набор минималиста'},
-        ]
-        setCounters(updatedState)
+    const handleIncrement = (id) => {
+        const newCounters = [...counters]
+        newCounters[id] = {
+            ...newCounters[id],
+            value: newCounters[id].value + 1
+        }
+        setCounters(newCounters)
+    }
+
+    const handleDecrement = (id) => {
+        const newCounters = [...counters]
+        newCounters[id] = {
+            ...newCounters[id],
+            value: newCounters[id].value - 1
+        }
+        setCounters(newCounters)
     }
 
     return <>
-        {counters.map(c => <Counter key={c.id} {...c} onDelete={handleDelete} />)}
+        {counters.map(c => <Counter 
+            key={c.id} {...c}
+            onDelete={handleDelete}
+            onIncrement={handleIncrement}
+            onDecrement={handleDecrement}
+        />)}
         <button className="btn btn-primary btn-sm m-2" onClick={handleReset}>Сброс</button>
-        <button className="btn btn-primary btn-sm m-2" onClick={handleUpdate}>Обновить состояние</button>
     </>
 }
 
