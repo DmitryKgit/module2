@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React from "react"
 
 const Counter = (props) => {
     const {value} = props
@@ -11,16 +11,6 @@ const Counter = (props) => {
         let classes = 'badge m-2 '
         classes += value === 0 ? 'bg-warning' : 'bg-primary'
         return classes
-    }
-
-    const handleIncrement = () => {
-        console.log('+')
-        // setValue((prevState) => prevState + 1)
-    }
-
-    const handleDecrement = () => {
-        console.log('-')
-        // setValue((prevState) => prevState - 1)
     }
 
     return (

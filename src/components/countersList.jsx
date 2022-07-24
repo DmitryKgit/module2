@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import Counter from "./counter";
+import React, {useState} from "react"
+import Counter from './counter'
 
 const CountersList = () => {
     const initialState = [
@@ -22,21 +22,27 @@ const CountersList = () => {
     }
 
     const handleIncrement = (id) => {
-        const newCounters = [...counters]
-        newCounters[id] = {
-            ...newCounters[id],
-            value: newCounters[id].value + 1
+        const index = counters.findIndex(counter => counter.id === id)
+        if (index > 0) {
+            const newCounters = [...counters]
+            newCounters[index] = {
+                ...newCounters[index],
+                value: newCounters[index].value + 1
+            }
+            setCounters(newCounters)
         }
-        setCounters(newCounters)
     }
 
     const handleDecrement = (id) => {
-        const newCounters = [...counters]
-        newCounters[id] = {
-            ...newCounters[id],
-            value: newCounters[id].value - 1
+        const index = counters.findIndex(counter => counter.id === id)
+        if (index > 0) {
+            const newCounters = [...counters]
+            newCounters[index] = {
+                ...newCounters[index],
+                value: newCounters[index].value - 1
+            }
+            setCounters(newCounters)
         }
-        setCounters(newCounters)
     }
 
     return <>
